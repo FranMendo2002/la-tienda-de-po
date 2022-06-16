@@ -7,6 +7,8 @@ import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
+import { Text } from "@nextui-org/react";
+
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 
 const itemsMenu = [
@@ -32,6 +34,9 @@ function Navbar() {
 	return (
 		<div className="navbar">
 			<img src={Logo} className="logo" alt="logo"></img>
+			<Text size="1.25rem" className="titulo">
+				La Tienda de Po
+			</Text>
 			<div className="links">
 				{itemsMenu.map(item => {
 					// Los botones del menú
