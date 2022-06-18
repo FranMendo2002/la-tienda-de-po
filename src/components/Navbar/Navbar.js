@@ -1,33 +1,33 @@
 import { Button } from "@nextui-org/react";
-import Logo from "../assets/logo.jpg";
+import Logo from "../../assets/logo.jpg";
 import "./Navbar.scss";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { Text } from "@nextui-org/react";
-
-import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import CartWidget from "./CartWidget/CartWidget";
 
 const itemsMenu = [
-	{ viewLink: "Inicio", link: "/", icono: <HomeOutlinedIcon /> },
 	{
+		id: 1,
+		viewLink: "Inicio",
+		link: "/",
+		icono: <HomeOutlinedIcon />,
+	},
+	{
+		id: 2,
 		viewLink: "Nosotros",
 		link: "/nosotros",
 		icono: <PeopleAltOutlinedIcon />,
 	},
-	{ viewLink: "Tienda", link: "/tienda", icono: <LocalOfferOutlinedIcon /> },
 	{
-		viewLink: "Carrito",
-		link: "/carrito",
-		icono: <ShoppingCartOutlinedIcon />,
+		id: 3,
+		viewLink: "Categorias",
+		link: "/categorias",
+		icono: <LocalOfferOutlinedIcon />,
 	},
-];
-
-const loginMenu = [
-	{ viewLink: "Iniciar sesión", link: "login", icono: <LoginOutlinedIcon /> },
 ];
 
 function Navbar() {
@@ -38,10 +38,11 @@ function Navbar() {
 				La Tienda de Po
 			</Text>
 			<div className="links">
-				{itemsMenu.map(item => {
+				{itemsMenu.map((item, index) => {
 					// Los botones del menú
 					return (
 						<Button
+							key={item.id}
 							icon={item.icono}
 							iconLeftCss="true"
 							value={item.viewLink}
@@ -52,20 +53,7 @@ function Navbar() {
 				})}
 			</div>
 
-			<div className="login">
-				{loginMenu.map(item => {
-					// Los botones del menú
-					return (
-						<Button
-							icon={item.icono}
-							iconLeftCss="true"
-							value={item.viewLink}
-						>
-							{item.viewLink}
-						</Button>
-					);
-				})}
-			</div>
+			<CartWidget />
 		</div>
 	);
 }
