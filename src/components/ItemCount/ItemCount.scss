@@ -1,0 +1,28 @@
+.item-count {
+	p {
+		margin: 0;
+	}
+
+	max-width: 330px;
+
+	.botones {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		Input {
+			height: 2rem;
+			text-align: center;
+		}
+
+		Button {
+			width: 2rem;
+			height: 2rem;
+			margin: 0 0.5rem;
+		}
+	}
+
+	.container-agregar {
+		margin: 1rem 0;
+	}
+}

@@ -1,11 +1,15 @@
-import { NextUIProvider } from "@nextui-org/react";
+import { createTheme, NextUIProvider } from "@nextui-org/react";
 import "./App.css";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Navbar from "./components/Navbar/Navbar";
 
+const darkTheme = createTheme({
+	type: "dark",
+});
+
 function App() {
 	return (
-		<NextUIProvider>
+		<NextUIProvider theme={darkTheme}>
 			<div className="App">
 				<Navbar />
 				<ItemListContainer greeting={"Fran"} />
