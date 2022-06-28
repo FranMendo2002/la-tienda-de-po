@@ -1,3 +1,40 @@
 {
-	"personas": [{ "id": 1, "nombre": "Franco" }]
+	"productos": [
+		{
+			"id": 1,
+			"nombre": "Camiseta para perro de River",
+			"nombreArchivo": "camiseta-perro.jpg",
+			"descripcion": "Una hermosa camiseta con la que tu perro no pasará frio",
+			"precio": 2500,
+			"stock": 5,
+			"inicial": 1
+		},
+		{
+			"id": 2,
+			"nombre": "Correa para perro",
+			"nombreArchivo": "correa.jpg",
+			"descripcion": "Correa de 1.50m",
+			"precio": 1500,
+			"stock": 10,
+			"inicial": 1
+		},
+		{
+			"id": 3,
+			"nombre": "Hueso",
+			"nombreArchivo": "hueso.png",
+			"descripcion": "Hueso para que tu perro juegue y cuide su dentadura",
+			"precio": 700,
+			"stock": 20,
+			"inicial": 2
+		},
+		{
+			"id": 4,
+			"nombre": "Jueguete para perro",
+			"nombreArchivo": "juguete1.jpg",
+			"descripcion": "Juguete de goma",
+			"precio": "500",
+			"stock": 3,
+			"inicial": 1
+		}
+	]
 }

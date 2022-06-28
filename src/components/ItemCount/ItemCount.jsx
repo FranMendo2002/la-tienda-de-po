@@ -1,8 +1,8 @@
-import { Button, Container, Input } from "@nextui-org/react";
+import { Button, Container, Input, Text } from "@nextui-org/react";
 import { useState } from "react";
 import "./ItemCount.scss";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
 	const [cont, setCont] = useState(initial);
 
 	const sumarCont = () => {
@@ -11,18 +11,15 @@ const ItemCount = ({ stock, initial }) => {
 	};
 
 	const restarCont = () => {
-		if (cont === 0) return;
+		if (cont === initial) return;
 		setCont(cont - 1);
-	};
-
-	const onAdd = () => {
-		console.log(`Seleccionaste ${cont} articulos`);
 	};
 
 	return (
 		<div className="item-count">
-			<p>Stock: {stock}</p>
-			<p>Cont: {cont}</p>
+			<Text size={18} margin={".5rem 0 1rem 0"} color="warning">
+				Articulos restantes: {stock}
+			</Text>
 
 			<div className="botones">
 				<Button size={"xs"} onPress={() => restarCont()}>
@@ -45,7 +42,11 @@ const ItemCount = ({ stock, initial }) => {
 				display="flex"
 				justify="center"
 			>
-				<Button onPress={() => onAdd()} disabled={stock === 0}>
+				<Button
+					size={"sm"}
+					onPress={() => onAdd(cont)}
+					disabled={stock === 0}
+				>
 					Agregar al carrito
 				</Button>
 			</Container>
