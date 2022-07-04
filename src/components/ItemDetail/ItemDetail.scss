@@ -1,0 +1,34 @@
+.contenedor_centrador {
+	display: flex;
+	justify-content: center;
+	.contenedor {
+		display: flex;
+		justify-content: center;
+		border: 1px solid gray;
+		border-radius: 1rem;
+		width: 50rem;
+		padding: 1.5rem;
+		background-color: #0e0e0e;
+
+		.contenedor_img {
+			display: flex;
+			align-items: center;
+			img {
+				border-radius: 1rem;
+				width: 20rem;
+			}
+		}
+
+		.informacion {
+			margin: 0 0 0 4rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+
+			.info_inferior {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
+}

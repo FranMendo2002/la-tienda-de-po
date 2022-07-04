@@ -61,6 +61,7 @@ const Item = ({ item }) => {
 						>
 							{item.descripcion}
 						</Text>
+						<Text transform="capitalize">{item.categoria}</Text>
 						<Button
 							color="success"
 							auto

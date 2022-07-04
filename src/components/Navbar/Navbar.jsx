@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react";
 import Logo from "../../assets/logo.jpg";
 import "./Navbar.scss";
 
@@ -6,14 +5,15 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 
-import { Text } from "@nextui-org/react";
+import { Button, Text } from "@nextui-org/react";
+import { NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget/CartWidget";
 
 const itemsMenu = [
 	{
 		id: 1,
 		viewLink: "Inicio",
-		link: "/",
+		link: "/home",
 		icono: <HomeOutlinedIcon />,
 	},
 	{
@@ -41,14 +41,15 @@ function Navbar() {
 				{itemsMenu.map((item, index) => {
 					// Los botones del menú
 					return (
-						<Button
-							key={item.id}
-							icon={item.icono}
-							iconLeftCss="true"
-							value={item.viewLink}
-						>
-							{item.viewLink}
-						</Button>
+						<NavLink to={item.link} key={item.id}>
+							<Button
+								icon={item.icono}
+								iconLeftCss="true"
+								value={item.viewLink}
+							>
+								{item.viewLink}
+							</Button>
+						</NavLink>
 					);
 				})}
 			</div>

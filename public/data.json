@@ -7,7 +7,8 @@
 			"descripcion": "Una hermosa camiseta con la que tu perro no pasará frio",
 			"precio": 2500,
 			"stock": 5,
-			"inicial": 1
+			"inicial": 1,
+			"categoria": "ropa"
 		},
 		{
 			"id": 2,
@@ -16,7 +17,8 @@
 			"descripcion": "Correa de 1.50m",
 			"precio": 1500,
 			"stock": 10,
-			"inicial": 1
+			"inicial": 1,
+			"categoria": "accesorio"
 		},
 		{
 			"id": 3,
@@ -25,7 +27,8 @@
 			"descripcion": "Hueso para que tu perro juegue y cuide su dentadura",
 			"precio": 700,
 			"stock": 20,
-			"inicial": 2
+			"inicial": 2,
+			"categoria": "juguete"
 		},
 		{
 			"id": 4,
@@ -34,7 +37,8 @@
 			"descripcion": "Juguete de goma",
 			"precio": "500",
 			"stock": 3,
-			"inicial": 1
+			"inicial": 1,
+			"categoria": "juguete"
 		}
 	]
 }
