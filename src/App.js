@@ -1,11 +1,11 @@
 import { createTheme, NextUIProvider } from "@nextui-org/react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Navbar from "./components/Navbar/Navbar";
 
-import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
-import Products from "./pages/Products/Products";
 
 const darkTheme = createTheme({
 	type: "dark",
@@ -19,10 +19,13 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={<Navigate to={"/home"}></Navigate>}
+						element={<ItemListContainer greeting={"Fran"} />}
 					></Route>
-					<Route path="/home" element={<Home />}></Route>
-					<Route path="/products" element={<Products />}></Route>
+					<Route
+						path="/category/:categoryId"
+						element={<ItemListContainer greeting={"Fran"} />}
+					></Route>
+					<Route path="/item/:id" element={<ItemDetailContainer />} />
 					<Route path="*" element={<NotFound />}></Route>
 				</Routes>
 			</div>

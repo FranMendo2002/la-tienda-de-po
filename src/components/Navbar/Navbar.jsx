@@ -13,19 +13,25 @@ const itemsMenu = [
 	{
 		id: 1,
 		viewLink: "Inicio",
-		link: "/home",
+		link: "/",
 		icono: <HomeOutlinedIcon />,
 	},
 	{
 		id: 2,
-		viewLink: "Nosotros",
-		link: "/nosotros",
+		viewLink: "Ropa",
+		link: "/category/ropa",
 		icono: <PeopleAltOutlinedIcon />,
 	},
 	{
 		id: 3,
-		viewLink: "Categorias",
-		link: "/categorias",
+		viewLink: "Accesorio",
+		link: "/category/accesorio",
+		icono: <LocalOfferOutlinedIcon />,
+	},
+	{
+		id: 4,
+		viewLink: "Juguete",
+		link: "/category/juguete",
 		icono: <LocalOfferOutlinedIcon />,
 	},
 ];
@@ -33,7 +39,9 @@ const itemsMenu = [
 function Navbar() {
 	return (
 		<div className="navbar">
-			<img src={Logo} className="logo" alt="logo"></img>
+			<NavLink to="/">
+				<img src={Logo} className="logo" alt="logo"></img>
+			</NavLink>
 			<Text size="1.25rem" className="titulo">
 				La Tienda de Po
 			</Text>

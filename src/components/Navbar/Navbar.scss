@@ -4,6 +4,7 @@
 
 	.logo {
 		height: 80px;
+		max-width: none; // Hago esto porque al poner el NavLink React hizo que mi imagen tenga un max-width del 100%. Con esto se arregla
 	}
 
 	.titulo {

@@ -40,5 +40,19 @@
 			"inicial": 1,
 			"categoria": "juguete"
 		}
+	],
+	"categorias": [
+		{
+			"id": 1,
+			"nombre": "ropa"
+		},
+		{
+			"id": 2,
+			"nombre": "accesorio"
+		},
+		{
+			"id": 3,
+			"nombre": "juguete"
+		}
 	]
 }

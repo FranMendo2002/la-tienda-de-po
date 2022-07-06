@@ -1,5 +1,5 @@
 import { Button, Card, Container, Text } from "@nextui-org/react";
-import ItemCount from "../ItemCount/ItemCount";
+import { NavLink } from "react-router-dom";
 import "./Item.scss";
 
 const Item = ({ item }) => {
@@ -76,13 +76,16 @@ const Item = ({ item }) => {
 				<Card.Footer
 					css={{
 						padding: 0,
+						display: "flex",
+						justifyContent: "center",
+						p: "1rem 0",
 					}}
 				>
-					<ItemCount
-						stock={item.stock}
-						initial={item.inicial}
-						onAdd={agregarAlCarrito}
-					/>
+					<NavLink to={`/item/${item.id}`}>
+						<Button color={"warning"} ghost auto>
+							Ir al detalle
+						</Button>
+					</NavLink>
 				</Card.Footer>
 			</Card>
 		</>
