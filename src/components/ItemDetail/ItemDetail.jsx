@@ -1,7 +1,12 @@
 import { Button, Text } from "@nextui-org/react";
+import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.scss";
 
 const ItemDetail = ({ item }) => {
+	const agregarAlCarrito = cant => {
+		console.log(`Seleccionaste ${cant} articulos`);
+	};
+
 	return (
 		<div className="contenedor_centrador">
 			<div className="contenedor">
@@ -21,6 +26,11 @@ const ItemDetail = ({ item }) => {
 					</div>
 					<div className="info_inferior">
 						<Text size={20}>{item.stock} articulos restantes</Text>
+						<ItemCount
+							initial={item.inicial}
+							stock={item.stock}
+							onAdd={agregarAlCarrito}
+						/>
 						<Button
 							css={{
 								margin: "1rem 0",

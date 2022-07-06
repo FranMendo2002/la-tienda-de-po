@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = ({ greeting }) => {
-	const [id, setId] = useState(2);
+	const id = 2;
 	const [item, setItem] = useState();
 
 	const getItem = () => {
