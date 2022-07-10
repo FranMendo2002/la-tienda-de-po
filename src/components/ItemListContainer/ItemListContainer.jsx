@@ -14,7 +14,7 @@ const ItemListContainer = ({ greeting }) => {
 		// Hace esto despues de renderizarse --> montarse
 		setIsLoading(true);
 		setTimeout(() => {
-			fetch("../data.json")
+			fetch("/data.json")
 				.then(resp => resp.json())
 				.then(data => {
 					if (categoryId) {

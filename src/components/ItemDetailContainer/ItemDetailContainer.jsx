@@ -8,20 +8,18 @@ const ItemDetailContainer = ({ greeting }) => {
 	const [categorias, setCategorias] = useState([]);
 
 	const getItem = () => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				fetch("../data.json")
-					.then(resp => resp.json())
-					.then(data => {
-						setCategorias(data.categorias);
-						setItem(
-							data.productos.find(
-								producto => producto.id === parseInt(id)
-							)
-						);
-					});
-			}, 0);
-		});
+		setTimeout(() => {
+			fetch("/data.json")
+				.then(resp => resp.json())
+				.then(data => {
+					setCategorias(data.categorias);
+					setItem(
+						data.productos.find(
+							producto => producto.id === parseInt(id)
+						)
+					);
+				});
+		}, 0);
 	};
 
 	useEffect(() => {

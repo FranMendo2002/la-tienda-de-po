@@ -1,10 +1,14 @@
 import { Button, Container, Text } from "@nextui-org/react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.scss";
 
 const ItemDetail = ({ item }) => {
+	const [mostrarCont, setMostrarCont] = useState(true);
+
 	const agregarAlCarrito = cant => {
-		console.log(`Seleccionaste ${cant} articulos`);
+		setMostrarCont(false);
 	};
 
 	return (
@@ -24,11 +28,13 @@ const ItemDetail = ({ item }) => {
 					<div className="info_inferior">
 						<Text size={20}>{item.stock} articulos restantes</Text>
 						<Container display="flex" justify="center">
-							<ItemCount
-								initial={item.inicial}
-								stock={item.stock}
-								onAdd={agregarAlCarrito}
-							/>
+							{mostrarCont && (
+								<ItemCount
+									initial={item.inicial}
+									stock={item.stock}
+									onAdd={agregarAlCarrito}
+								/>
+							)}
 						</Container>
 						<Button
 							css={{
@@ -40,9 +46,11 @@ const ItemDetail = ({ item }) => {
 						>
 							$ {item.precio}
 						</Button>
-						<Button size="lg" color={"success"} bordered>
-							Comprar ahora
-						</Button>
+						<NavLink to="/cart">
+							<Button size="lg" color={"success"} bordered>
+								Comprar ahora
+							</Button>
+						</NavLink>
 					</div>
 				</div>
 			</div>
