@@ -28,6 +28,11 @@
 			.info_inferior {
 				display: flex;
 				flex-direction: column;
+
+				.navLink {
+					display: flex;
+					justify-content: center;
+				}
 			}
 		}
 	}

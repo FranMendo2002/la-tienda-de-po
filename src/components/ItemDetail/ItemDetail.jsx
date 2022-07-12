@@ -1,13 +1,18 @@
 import { Button, Container, Text } from "@nextui-org/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import CartContext from "../../context/cart-context";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.scss";
 
 const ItemDetail = ({ item }) => {
 	const [mostrarCont, setMostrarCont] = useState(true);
+	const cartContext = useContext(CartContext);
 
 	const agregarAlCarrito = cant => {
+		const productoAgregado = { ...item, cant };
+		console.log("Desde agregar al carrito: ", productoAgregado);
+		cartContext.onAgregarProducto(productoAgregado);
 		setMostrarCont(false);
 	};
 
@@ -46,11 +51,13 @@ const ItemDetail = ({ item }) => {
 						>
 							$ {item.precio}
 						</Button>
-						<NavLink to="/cart">
-							<Button size="lg" color={"success"} bordered>
-								Comprar ahora
-							</Button>
-						</NavLink>
+						{!mostrarCont && (
+							<NavLink to="/cart" className="navLink">
+								<Button size="lg" color={"success"} bordered>
+									Comprar ahora
+								</Button>
+							</NavLink>
+						)}
 					</div>
 				</div>
 			</div>

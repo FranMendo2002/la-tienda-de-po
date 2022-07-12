@@ -8,30 +8,37 @@ import Navbar from "./components/Navbar/Navbar";
 
 import NotFound from "./pages/NotFound/NotFound";
 
+import { CartContextProvider } from "./context/cart-context";
+
 const darkTheme = createTheme({
 	type: "dark",
 });
 
 function App() {
 	return (
-		<NextUIProvider theme={darkTheme}>
-			<div className="App">
-				<Navbar />
-				<Routes>
-					<Route
-						path="/"
-						element={<ItemListContainer greeting={"Fran"} />}
-					></Route>
-					<Route
-						path="/category/:categoryId"
-						element={<ItemListContainer greeting={"Fran"} />}
-					></Route>
-					<Route path="/item/:id" element={<ItemDetailContainer />} />
-					<Route path="/cart" element={<Cart />} />
-					<Route path="*" element={<NotFound />}></Route>
-				</Routes>
-			</div>
-		</NextUIProvider>
+		<CartContextProvider>
+			<NextUIProvider theme={darkTheme}>
+				<div className="App">
+					<Navbar />
+					<Routes>
+						<Route
+							path="/"
+							element={<ItemListContainer greeting={"Fran"} />}
+						></Route>
+						<Route
+							path="/category/:categoryId"
+							element={<ItemListContainer greeting={"Fran"} />}
+						></Route>
+						<Route
+							path="/item/:id"
+							element={<ItemDetailContainer />}
+						/>
+						<Route path="/cart" element={<Cart />} />
+						<Route path="*" element={<NotFound />}></Route>
+					</Routes>
+				</div>
+			</NextUIProvider>
+		</CartContextProvider>
 	);
 }
 
