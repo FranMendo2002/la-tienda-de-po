@@ -6,26 +6,38 @@ const CartContext = React.createContext({
 });
 
 export const CartContextProvider = ({ children }) => {
-	const [productos, setProductos] = useState([1, 2]);
+	const [productos, setProductos] = useState([]);
 
 	useEffect(() => {}, []);
 
 	const agregarProductoHandler = productoNuevo => {
-		// const nuevosProductos = productos.map(producto => {
-		// 	if (producto.id === productoNuevo.id) {
-		// 		return {
-		// 			...producto,
-		// 			cant: producto.cant + productoNuevo.cant,
-		// 		};
-		// 	}
+		const nuevosProductos = productos.map(producto => {
+			if (producto.id === productoNuevo.id) {
+				return {
+					...producto,
+					cant: producto.cant + productoNuevo.cant,
+				};
+			}
 
-		// 	return producto;
-		// });
+			return productoNuevo;
+		});
 
-		// setProductos(nuevosProductos);
-		console.log("Desde context, producto nuevo: ", productoNuevo);
-		setProductos(prevProds => [...prevProds, productoNuevo]);
-		console.log("Productos del carrito: ", productos);
+		setProductos(nuevosProductos);
+		console.log(productos);
+	};
+
+	const eliminarProductoHandler = productoId => {
+		setProductos(prevProductos => {
+			prevProductos.filter(producto => producto.id !== productoId);
+		});
+	};
+
+	const vaciarHandler = () => {
+		setProductos([]);
+	};
+
+	const existeProductoHandler = id => {
+		return productos.find(producto => producto.id === id) ? true : false;
 	};
 
 	return (
@@ -33,6 +45,9 @@ export const CartContextProvider = ({ children }) => {
 			value={{
 				productos,
 				onAgregarProducto: agregarProductoHandler,
+				onEliminarProducto: eliminarProductoHandler,
+				onVaciarCarrito: vaciarHandler,
+				onExisteProducto: existeProductoHandler,
 			}}
 		>
 			{children}

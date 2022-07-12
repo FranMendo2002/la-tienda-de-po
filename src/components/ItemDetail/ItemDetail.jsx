@@ -11,7 +11,6 @@ const ItemDetail = ({ item }) => {
 
 	const agregarAlCarrito = cant => {
 		const productoAgregado = { ...item, cant };
-		console.log("Desde agregar al carrito: ", productoAgregado);
 		cartContext.onAgregarProducto(productoAgregado);
 		setMostrarCont(false);
 	};
