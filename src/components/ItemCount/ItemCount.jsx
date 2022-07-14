@@ -1,4 +1,5 @@
-import { Button, Container, Input, Text } from "@nextui-org/react";
+import Button from "@mui/material/Button";
+import { Container, Input, Text } from "@nextui-org/react";
 import { useState } from "react";
 import "./ItemCount.scss";
 
@@ -22,7 +23,11 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 			</Text>
 
 			<div className="botones">
-				<Button size={"xs"} onPress={() => restarCont()}>
+				<Button
+					variant="contained"
+					size="small"
+					onClick={() => restarCont()}
+				>
 					-
 				</Button>
 				<Input
@@ -33,7 +38,11 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 					status="success"
 					aria-label="contador"
 				/>
-				<Button size={"xs"} onPress={() => sumarCont()}>
+				<Button
+					variant="contained"
+					size="small"
+					onClick={() => sumarCont()}
+				>
 					+
 				</Button>
 			</div>
@@ -43,8 +52,9 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 				justify="center"
 			>
 				<Button
-					size={"sm"}
-					onPress={() => onAdd(cont)}
+					size="small"
+					variant="contained"
+					onClick={() => onAdd(cont)}
 					disabled={stock === 0}
 				>
 					Agregar al carrito

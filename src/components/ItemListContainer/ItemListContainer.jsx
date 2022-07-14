@@ -29,7 +29,7 @@ const ItemListContainer = ({ greeting }) => {
 				});
 			setIsLoading(false);
 		}, 2000);
-	}, []); // Si el array del segundo parametro esta vacio, se va a ejecutar solo una vez
+	}, [categoryId]); // Si el array del segundo parametro esta vacio, se va a ejecutar solo una vez
 	return (
 		<section className="cuerpo">
 			<Text h1 weight={"light"}>

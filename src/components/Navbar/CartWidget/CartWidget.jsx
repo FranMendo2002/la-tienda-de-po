@@ -1,11 +1,14 @@
 import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
-import { Button } from "@nextui-org/react";
+import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
 
 const CartWidget = () => {
 	return (
-		<Button icon={<ShoppingCartOutlined />} iconLeftCss="true">
-			Carrito
-		</Button>
+		<NavLink to="/cart">
+			<Button startIcon={<ShoppingCartOutlined />} size="large">
+				Carrito
+			</Button>
+		</NavLink>
 	);
 };
 

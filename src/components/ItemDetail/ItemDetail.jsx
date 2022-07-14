@@ -1,9 +1,16 @@
-import { Button, Container, Text } from "@nextui-org/react";
+import styled from "@emotion/styled";
+import Button from "@mui/material/Button";
+import { Container, Text } from "@nextui-org/react";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import CartContext from "../../context/cart-context";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.scss";
+
+const PrecioButton = styled(Button)({
+	margin: "1rem 0",
+	width: "8rem",
+});
 
 const ItemDetail = ({ item }) => {
 	const [mostrarCont, setMostrarCont] = useState(true);
@@ -40,19 +47,20 @@ const ItemDetail = ({ item }) => {
 								/>
 							)}
 						</Container>
-						<Button
-							css={{
-								margin: "1rem 0",
-							}}
-							color={"secondary"}
-							rounded
-							flat
-						>
-							$ {item.precio}
-						</Button>
+						<Container display="flex" justify="center">
+							<PrecioButton
+								variant="contained"
+								color="secondary"
+								css={{
+									margin: "1rem 0",
+								}}
+							>
+								$ {item.precio}
+							</PrecioButton>
+						</Container>
 						{!mostrarCont && (
 							<NavLink to="/cart" className="navLink">
-								<Button size="lg" color={"success"} bordered>
+								<Button variant="outlined" color="warning">
 									Comprar ahora
 								</Button>
 							</NavLink>

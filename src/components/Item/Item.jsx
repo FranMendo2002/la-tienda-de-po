@@ -1,19 +1,21 @@
-import { Button, Card, Container, Text } from "@nextui-org/react";
+import styled from "@emotion/styled";
+import Button from "@mui/material/Button";
+import { Card, Container, Text } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
 import "./Item.scss";
 
-const Item = ({ item }) => {
-	const agregarAlCarrito = cant => {
-		console.log(`Seleccionaste ${cant} articulos`);
-	};
+const PrecioButton = styled(Button)({
+	marginTop: "1rem",
+});
 
+const Item = ({ item }) => {
 	return (
 		<>
 			<Card
 				css={{
 					mw: "20rem",
 					padding: "0",
-					margin: "2rem",
+					margin: "1rem",
 				}}
 			>
 				<Card.Header>
@@ -62,14 +64,13 @@ const Item = ({ item }) => {
 							{item.descripcion}
 						</Text>
 						<Text transform="capitalize">{item.categoria}</Text>
-						<Button
+						<PrecioButton
+							className="boton-precio"
 							color="success"
-							auto
-							ghost
-							css={{ marginTop: "1rem" }}
+							variant="contained"
 						>
 							$ {item.precio}
-						</Button>
+						</PrecioButton>
 					</Container>
 				</Card.Body>
 				<Card.Divider />
@@ -82,9 +83,7 @@ const Item = ({ item }) => {
 					}}
 				>
 					<NavLink to={`/item/${item.id}`}>
-						<Button color={"warning"} ghost auto>
-							Ir al detalle
-						</Button>
+						<Button variant="contained">Ir al detalle</Button>
 					</NavLink>
 				</Card.Footer>
 			</Card>

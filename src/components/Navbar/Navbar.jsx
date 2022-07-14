@@ -1,11 +1,13 @@
 import Logo from "../../assets/logo.jpg";
 import "./Navbar.scss";
 
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import CheckroomIcon from "@mui/icons-material/Checkroom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 
-import { Button, Text } from "@nextui-org/react";
+import Button from "@mui/material/Button";
+import { Text } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget/CartWidget";
 
@@ -20,19 +22,19 @@ const itemsMenu = [
 		id: 2,
 		viewLink: "Ropa",
 		link: "/category/ropa",
-		icono: <PeopleAltOutlinedIcon />,
+		icono: <CheckroomIcon />,
 	},
 	{
 		id: 3,
 		viewLink: "Accesorio",
 		link: "/category/accesorio",
-		icono: <LocalOfferOutlinedIcon />,
+		icono: <AttachFileIcon />,
 	},
 	{
 		id: 4,
 		viewLink: "Juguete",
 		link: "/category/juguete",
-		icono: <LocalOfferOutlinedIcon />,
+		icono: <SmartToyIcon />,
 	},
 ];
 
@@ -50,11 +52,7 @@ function Navbar() {
 					// Los botones del menú
 					return (
 						<NavLink to={item.link} key={item.id}>
-							<Button
-								icon={item.icono}
-								iconLeftCss="true"
-								value={item.viewLink}
-							>
+							<Button startIcon={item.icono} size="large">
 								{item.viewLink}
 							</Button>
 						</NavLink>

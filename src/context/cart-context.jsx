@@ -11,25 +11,21 @@ export const CartContextProvider = ({ children }) => {
 	useEffect(() => {}, []);
 
 	const agregarProductoHandler = productoNuevo => {
-		const nuevosProductos = productos.map(producto => {
-			if (producto.id === productoNuevo.id) {
-				return {
-					...producto,
-					cant: producto.cant + productoNuevo.cant,
-				};
-			}
-
-			return productoNuevo;
-		});
-
-		setProductos(nuevosProductos);
-		console.log(productos);
+		if (existeProductoHandler(productoNuevo.id)) {
+			const auxProductos = productos.map(producto => {
+				if (producto.id === productoNuevo.id) {
+					producto.cant += productoNuevo.cant;
+				}
+				return producto;
+			});
+			setProductos(auxProductos);
+		} else {
+			setProductos([...productos, productoNuevo]);
+		}
 	};
 
 	const eliminarProductoHandler = productoId => {
-		setProductos(prevProductos => {
-			prevProductos.filter(producto => producto.id !== productoId);
-		});
+		setProductos(productos.filter(producto => producto.id !== productoId));
 	};
 
 	const vaciarHandler = () => {
@@ -37,7 +33,7 @@ export const CartContextProvider = ({ children }) => {
 	};
 
 	const existeProductoHandler = id => {
-		return productos.find(producto => producto.id === id) ? true : false;
+		return productos.some(producto => producto.id === id);
 	};
 
 	return (
