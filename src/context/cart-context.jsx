@@ -36,6 +36,20 @@ export const CartContextProvider = ({ children }) => {
 		return productos.some(producto => producto.id === id);
 	};
 
+	const calcularCantTotalHandler = () => {
+		let total = 0;
+		productos.forEach(producto => (total += producto.cant));
+		return total;
+	};
+
+	const precioTotalHandler = () => {
+		let total = 0;
+		productos.forEach(
+			producto => (total += producto.cant * producto.precio)
+		);
+		return total;
+	};
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -44,6 +58,8 @@ export const CartContextProvider = ({ children }) => {
 				onEliminarProducto: eliminarProductoHandler,
 				onVaciarCarrito: vaciarHandler,
 				onExisteProducto: existeProductoHandler,
+				onCantidadProductos: calcularCantTotalHandler,
+				onPrecioTotal: precioTotalHandler,
 			}}
 		>
 			{children}

@@ -8,7 +8,9 @@ import SmartToyIcon from "@mui/icons-material/SmartToy";
 
 import Button from "@mui/material/Button";
 import { Text } from "@nextui-org/react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import CartContext from "../../context/cart-context";
 import CartWidget from "./CartWidget/CartWidget";
 
 const itemsMenu = [
@@ -39,6 +41,8 @@ const itemsMenu = [
 ];
 
 function Navbar() {
+	const cartContext = useContext(CartContext);
+
 	return (
 		<div className="navbar">
 			<NavLink to="/">
@@ -60,7 +64,7 @@ function Navbar() {
 				})}
 			</div>
 
-			<CartWidget />
+			{cartContext.productos.length !== 0 && <CartWidget />}
 		</div>
 	);
 }
