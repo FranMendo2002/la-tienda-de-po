@@ -1,3 +1,11 @@
+import {
+	collection,
+	getDocs,
+	getFirestore,
+	limit,
+	query,
+	where,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
@@ -5,21 +13,18 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 const ItemDetailContainer = ({ greeting }) => {
 	const { id } = useParams();
 	const [item, setItem] = useState();
-	const [categorias, setCategorias] = useState([]);
 
 	const getItem = () => {
-		setTimeout(() => {
-			fetch("/data.json")
-				.then(resp => resp.json())
-				.then(data => {
-					setCategorias(data.categorias);
-					setItem(
-						data.productos.find(
-							producto => producto.id === parseInt(id)
-						)
-					);
-				});
-		}, 0);
+		const db = getFirestore();
+		const productosCollection = collection(db, "productos");
+		const q = query(
+			productosCollection,
+			where("id", "==", parseInt(id), limit(1))
+		);
+
+		getDocs(q).then(snapshot => {
+			setItem(snapshot.docs[0].data());
+		});
 	};
 
 	useEffect(() => {
