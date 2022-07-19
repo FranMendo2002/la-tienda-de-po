@@ -5,6 +5,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 
+import {
+	collection,
+	getDocs,
+	getFirestore,
+	query,
+	where,
+} from "firebase/firestore";
+
 const ItemListContainer = ({ greeting }) => {
 	const [productos, setProductos] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -13,22 +21,25 @@ const ItemListContainer = ({ greeting }) => {
 	useEffect(() => {
 		// Hace esto despues de renderizarse --> montarse
 		setIsLoading(true);
-		setTimeout(() => {
-			fetch("/data.json")
-				.then(resp => resp.json())
-				.then(data => {
-					if (categoryId) {
-						setProductos(
-							data.productos.filter(
-								producto => producto.categoria === categoryId
-							)
-						);
-					} else {
-						setProductos(data.productos);
-					}
-				});
-			setIsLoading(false);
-		}, 2000);
+
+		const db = getFirestore();
+		const productosCollection = collection(db, "productos");
+
+		if (categoryId) {
+			const q = query(
+				productosCollection,
+				where("categoria", "==", categoryId)
+			);
+			getDocs(q).then(snapshot => {
+				setProductos(snapshot.docs.map(doc => doc.data()));
+				setIsLoading(false);
+			});
+		} else {
+			getDocs(productosCollection).then(snapshot => {
+				setProductos(snapshot.docs.map(doc => doc.data()));
+				setIsLoading(false);
+			});
+		}
 	}, [categoryId]); // Si el array del segundo parametro esta vacio, se va a ejecutar solo una vez
 	return (
 		<section className="cuerpo">

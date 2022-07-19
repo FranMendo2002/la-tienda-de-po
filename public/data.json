@@ -35,7 +35,7 @@
 			"nombre": "Juguete para perro",
 			"nombreArchivo": "juguete1.jpg",
 			"descripcion": "Juguete de goma",
-			"precio": "500",
+			"precio": 500,
 			"stock": 3,
 			"inicial": 1,
 			"categoria": "juguete"
