@@ -8,7 +8,9 @@ import Navbar from "./components/Navbar/Navbar";
 
 import NotFound from "./pages/NotFound/NotFound";
 
+import CompraFinalizada from "./components/CompraFinalizada/CompraFinalizada";
 import { CartContextProvider } from "./context/cart-context";
+import { UserContextProvider } from "./context/user-context";
 
 const darkTheme = createTheme({
 	type: "dark",
@@ -16,29 +18,39 @@ const darkTheme = createTheme({
 
 function App() {
 	return (
-		<CartContextProvider>
-			<NextUIProvider theme={darkTheme}>
-				<div className="App">
-					<Navbar />
-					<Routes>
-						<Route
-							path="/"
-							element={<ItemListContainer greeting={"Fran"} />}
-						></Route>
-						<Route
-							path="/category/:categoryId"
-							element={<ItemListContainer greeting={"Fran"} />}
-						></Route>
-						<Route
-							path="/item/:id"
-							element={<ItemDetailContainer />}
-						/>
-						<Route path="/cart" element={<Cart />} />
-						<Route path="*" element={<NotFound />}></Route>
-					</Routes>
-				</div>
-			</NextUIProvider>
-		</CartContextProvider>
+		<UserContextProvider>
+			<CartContextProvider>
+				<NextUIProvider theme={darkTheme}>
+					<div className="App">
+						<Navbar />
+						<Routes>
+							<Route
+								path="/"
+								element={
+									<ItemListContainer greeting={"Fran"} />
+								}
+							></Route>
+							<Route
+								path="/category/:categoryId"
+								element={
+									<ItemListContainer greeting={"Fran"} />
+								}
+							></Route>
+							<Route
+								path="/item/:id"
+								element={<ItemDetailContainer />}
+							/>
+							<Route path="/cart" element={<Cart />} />
+							<Route
+								path="/compra/:idCompra"
+								element={<CompraFinalizada />}
+							></Route>
+							<Route path="*" element={<NotFound />}></Route>
+						</Routes>
+					</div>
+				</NextUIProvider>
+			</CartContextProvider>
+		</UserContextProvider>
 	);
 }
 

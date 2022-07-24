@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import CartContext from "../../context/cart-context";
 import CartWidget from "./CartWidget/CartWidget";
+import UserWidget from "./UserWidget/UserWidget";
 
 const itemsMenu = [
 	{
@@ -63,7 +64,7 @@ function Navbar() {
 					);
 				})}
 			</div>
-
+			<UserWidget />
 			{cartContext.productos.length !== 0 && <CartWidget />}
 		</div>
 	);

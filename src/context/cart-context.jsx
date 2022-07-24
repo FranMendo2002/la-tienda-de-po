@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 const CartContext = React.createContext({
 	productos: [],
 	onAgregarProducto: producto => {},
+	onEliminarProducto: productoId => {},
+	onVaciarCarrito: () => {},
+	onExisteProducto: id => {},
+	onCantidadProductos: () => {},
+	onPrecioTotal: () => {},
 });
 
 export const CartContextProvider = ({ children }) => {

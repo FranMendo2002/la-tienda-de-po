@@ -25,21 +25,13 @@ const ItemListContainer = ({ greeting }) => {
 		const db = getFirestore();
 		const productosCollection = collection(db, "productos");
 
-		if (categoryId) {
-			const q = query(
-				productosCollection,
-				where("categoria", "==", categoryId)
-			);
-			getDocs(q).then(snapshot => {
-				setProductos(snapshot.docs.map(doc => doc.data()));
-				setIsLoading(false);
-			});
-		} else {
-			getDocs(productosCollection).then(snapshot => {
-				setProductos(snapshot.docs.map(doc => doc.data()));
-				setIsLoading(false);
-			});
-		}
+		const q = categoryId
+			? query(productosCollection, where("categoria", "==", categoryId))
+			: productosCollection;
+		getDocs(q).then(snapshot => {
+			setProductos(snapshot.docs.map(doc => doc.data()));
+			setIsLoading(false);
+		});
 	}, [categoryId]); // Si el array del segundo parametro esta vacio, se va a ejecutar solo una vez
 	return (
 		<section className="cuerpo">

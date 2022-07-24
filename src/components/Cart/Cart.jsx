@@ -11,11 +11,18 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import CartContext from "../../context/cart-context";
 import Item from "../Item/Item";
+import UserForm from "../UserForm/UserForm";
 import "./Cart.scss";
 
 const Cart = () => {
 	const cartContext = useContext(CartContext);
 	const [showDialog, setShowDialog] = useState(false);
+
+	const [openDialog, setOpenDialog] = useState(false);
+
+	const handleOpenDialog = () => {
+		setOpenDialog(true);
+	};
 
 	const handleAceptar = () => {
 		setShowDialog(false);
@@ -107,6 +114,14 @@ const Cart = () => {
 						}}
 					>
 						<h2>Precio total: {cartContext.onPrecioTotal()}</h2>
+						<Button size="large" onClick={handleOpenDialog}>
+							Finalizar compra
+						</Button>
+						<UserForm
+							openDialog={openDialog}
+							setOpenDialog={setOpenDialog}
+							isInCart={true}
+						></UserForm>
 					</Container>
 				</>
 			)}
