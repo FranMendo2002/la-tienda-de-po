@@ -67,6 +67,7 @@ const UserForm = props => {
 					cant: producto.cant,
 				};
 			}),
+			fecha: Date.now(),
 			total: cartContext.onPrecioTotal(),
 		};
 
@@ -83,6 +84,15 @@ const UserForm = props => {
 		});
 
 		handleCerrarDialog();
+	};
+
+	const handlePuedeComprar = () => {
+		return (
+			props.isInCart &&
+			userContext.nombre !== "" &&
+			userContext.telefono !== "" &&
+			userContext.email !== ""
+		);
 	};
 
 	return (
@@ -161,7 +171,7 @@ const UserForm = props => {
 				>
 					Guardar
 				</Button>
-				{props.isInCart && (
+				{handlePuedeComprar() && (
 					<Button onClick={handleComprar} color="success">
 						Comprar
 					</Button>
