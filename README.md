@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# La Tienda de Po
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Este proyecto es una e-commerce realizado durante el curso de React en CoderHouse, donde se implementa Firebase_
 
-## Available Scripts
+## Comenzando 🚀
 
-In the project directory, you can run:
+Podes clonar el repositorio en la carpeta que vos quieras dentro de tu equipo, corriendo el siguiente comando:
+
+### `git clone https://github.com/FranMendo2002/la-tienda-de-po-mendoza.git`
+
+Una vez hecho esto, es necesario instalar los node_modules
+
+### `npm install`
+
+Una vez instalados, podemos correr la aplicacion con el comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Corre la aplicacion en modo de desarrollo
+Abri [http://localhost:3000](http://localhost:3000) para verlo en tu navegador
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Construye la aplicacion para producción en la carpeta `build` para tener una mejor performance y optimizacion.
+De esta manera la aplicacion estaría lista para ser desplegada
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Sobre la tienda 🐼
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La Tienda de Po es un proyecto de un E-Commerce que se realizo durante el curso de CoderHouse sobre React.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Dispone de una navegación donde en el inicio podremos obtener un listado de productos traidos directamente desde Firebase 🔥
+-   En la navegación tambien podremos encontrar las distintas categorias de productos que tiene la tienda 👜
+-   Podremos ir al detalle de cada producto y con un contador, seleccionar la cantidad que queremos agregar a nuestro carrito del stock, junto con un boton que nos permite sumarlo ➕
+-   Tambien podremos ver una pestaña llamada "Usuario" donde podremos ingresar nuestros datos para que esten listos al momento de realizar la compra 👦🧒
+-   En el carrito podremos ver todos los productos que agregamos e interactuar con ellos
+    -   Vaciar el carrito 💥
+    -   Eliminar productos en especifico 🎯
+    -   Ir al detalle 📖
+    -   Ver las cantidades que seleccionamos ✅
+-   Una vez que seleccionamos todos nuestros productos, podremos finalizar la compra, donde esta información se guardara en nuestra base de datos y el usuario podra informarse sobre el id de su compra 💰

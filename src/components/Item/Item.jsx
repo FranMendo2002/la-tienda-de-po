@@ -82,7 +82,7 @@ const Item = ({ item }) => {
 						p: "1rem 0",
 					}}
 				>
-					<NavLink to={`/item/${item.id}`}>
+					<NavLink to={`/item/${item.idProducto}`}>
 						<Button variant="contained">Ir al detalle</Button>
 					</NavLink>
 				</Card.Footer>

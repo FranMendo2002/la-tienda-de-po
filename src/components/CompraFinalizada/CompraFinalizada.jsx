@@ -1,9 +1,16 @@
 import { Button } from "@mui/material";
 import { Container, Text } from "@nextui-org/react";
+import { useContext, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import CartContext from "../../context/cart-context";
 
 const CompraFinalizada = () => {
 	const { idCompra } = useParams();
+	const cartContext = useContext(CartContext);
+
+	useEffect(() => {
+		cartContext.onVaciarCarrito();
+	}, []);
 
 	return (
 		<Container>

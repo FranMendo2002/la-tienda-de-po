@@ -39,7 +39,7 @@ const ItemDetail = ({ item }) => {
 					<div className="info_inferior">
 						<Text size={20}>{item.stock} articulos restantes</Text>
 						<Container display="flex" justify="center">
-							{mostrarCont && (
+							{mostrarCont && item.stock > 0 && (
 								<ItemCount
 									initial={item.inicial}
 									stock={item.stock}

@@ -71,9 +71,10 @@ const UserForm = props => {
 			total: cartContext.onPrecioTotal(),
 		};
 
-		addDoc(ordenesCollection, orden).then(({ id }) =>
-			navigate(`/compra/${id}`)
-		);
+		addDoc(ordenesCollection, orden).then(({ id }) => {
+			cartContext.onRestarStock();
+			navigate(`/compra/${id}`);
+		});
 	};
 
 	const handleGuardarDialog = () => {

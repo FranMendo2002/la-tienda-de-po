@@ -1,29 +1,19 @@
-import {
-	collection,
-	getDocs,
-	getFirestore,
-	limit,
-	query,
-	where,
-} from "firebase/firestore";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = ({ greeting }) => {
-	const { id } = useParams();
+	const { idProducto } = useParams();
 	const [item, setItem] = useState();
 
 	const getItem = () => {
 		const db = getFirestore();
-		const productosCollection = collection(db, "productos");
-		const q = query(
-			productosCollection,
-			where("id", "==", parseInt(id), limit(1))
-		);
-
-		getDocs(q).then(snapshot => {
-			setItem(snapshot.docs[0].data());
+		const productoRef = doc(db, "productos", idProducto);
+		getDoc(productoRef).then(snapshot => {
+			if (snapshot.exists()) {
+				setItem({ ...snapshot.data(), idProducto });
+			}
 		});
 	};
 

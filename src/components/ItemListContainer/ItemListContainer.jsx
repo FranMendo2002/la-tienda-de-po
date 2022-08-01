@@ -29,7 +29,12 @@ const ItemListContainer = ({ greeting }) => {
 			? query(productosCollection, where("categoria", "==", categoryId))
 			: productosCollection;
 		getDocs(q).then(snapshot => {
-			setProductos(snapshot.docs.map(doc => doc.data()));
+			setProductos(
+				snapshot.docs.map(doc => {
+					return { ...doc.data(), idProducto: doc.id };
+				})
+			);
+
 			setIsLoading(false);
 		});
 	}, [categoryId]); // Si el array del segundo parametro esta vacio, se va a ejecutar solo una vez

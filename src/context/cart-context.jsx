@@ -1,3 +1,4 @@
+import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 
 const CartContext = React.createContext({
@@ -8,6 +9,7 @@ const CartContext = React.createContext({
 	onExisteProducto: id => {},
 	onCantidadProductos: () => {},
 	onPrecioTotal: () => {},
+	onRestarStock: () => {},
 });
 
 export const CartContextProvider = ({ children }) => {
@@ -55,6 +57,17 @@ export const CartContextProvider = ({ children }) => {
 		return total;
 	};
 
+	const restarStockHandler = () => {
+		// Esta funcion solo se ejecutará una vez que se finalice la compra
+		const db = getFirestore();
+
+		productos.forEach(producto => {
+			const productoDB = doc(db, "productos", producto.idProducto);
+			const nuevaCant = producto.stock - producto.cant;
+			updateDoc(productoDB, { stock: nuevaCant });
+		});
+	};
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -65,6 +78,7 @@ export const CartContextProvider = ({ children }) => {
 				onExisteProducto: existeProductoHandler,
 				onCantidadProductos: calcularCantTotalHandler,
 				onPrecioTotal: precioTotalHandler,
+				onRestarStock: restarStockHandler,
 			}}
 		>
 			{children}
