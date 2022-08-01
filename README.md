@@ -38,3 +38,7 @@ La Tienda de Po es un proyecto de un E-Commerce que se realizo durante el curso 
     -   Ir al detalle 📖
     -   Ver las cantidades que seleccionamos ✅
 -   Una vez que seleccionamos todos nuestros productos, podremos finalizar la compra, donde esta información se guardara en nuestra base de datos y el usuario podra informarse sobre el id de su compra 💰
+
+## Sobre el gif
+
+Dentro de la carpta src/gif encontraremos un gif sobre la navegacion de nuestra pagina y como funciona 🎥
